@@ -2,21 +2,35 @@
   "name": "palettr",
   "version": "0.1.0",
   "private": true,
+  "main": "public/electron.js",
   "dependencies": {
+    "@emotion/core": "^10.0.5",
+    "@emotion/styled": "^10.0.6",
     "@types/jest": "23.3.12",
     "@types/node": "10.12.18",
     "@types/react": "16.7.18",
     "@types/react-dom": "16.0.11",
+    "electron-is-dev": "^1.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-pose": "^4.0.4",
     "react-scripts": "2.1.3",
     "typescript": "3.2.2"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "electron": "^3.0.4",
+    "electron-builder": "^20.18.0",
+    "electron-devtools-installer": "^2.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "npx build --x64 --macos --c.extraMetadata.main=build/electron.js -p always"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,5 +40,38 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "build": {
+    "compression": "normal",
+    "productName": "palettr",
+    "extends": null,
+    "files": [
+      "./build/**/*",
+      "./build/electron.js"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "mac": {
+      "icon": "assets/icon.icns",
+      "type": "distribution",
+      "target": [
+        "pkg",
+        "dmg",
+        "mas"
+      ],
+      "publish": {
+        "provider": "s3",
+        "bucket": "example-releases",
+        "path": "releases"
+      },
+      "category": "public.app-category.news"
+    },
+    "mas": {
+      "entitlements": "assets/entitlements.mas.plist",
+      "entitlementsInherit": "assets/entitlements.mas.inherit.plist",
+      "provisioningProfile": "assets/embedded.provisionprofile"
+    }
+  }
 }
