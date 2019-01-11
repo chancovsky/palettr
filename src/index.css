@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.drag-bar {
+  width: 100vw;
+  height: 35px;
+  position: fixed;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.container {
+  width: 100vw;
+  height: calc(100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #282c34bf;
+}

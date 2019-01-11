@@ -1,0 +1,104 @@
+{
+    "colorData": [
+        {
+            "name": "Palette 1",
+            "colors": [
+                {
+                    "name": "PLUM",
+                    "hex": "#88498F"
+                },
+                {
+                    "name": "WELDON BLUE",
+                    "hex": "#779FA1"
+                },
+                {
+                    "name": "DESERT SAND",
+                    "hex": "#E0CBA8"
+                },
+                {
+                    "name": "TOMATO",
+                    "hex": "#FF6542"
+                },
+                {
+                    "name": "PINEAPPLE",
+                    "hex": "#564154"
+                }
+            ]
+        },
+        {
+            "name": "Palette 2",
+            "colors": [
+                {
+                    "name": "DUST STORM",
+                    "hex": "#EBD4CB"
+                },
+                {
+                    "name": "PARROT PINK",
+                    "hex": "#DA9F93"
+                },
+                {
+                    "name": "ROSE",
+                    "hex": "#B6465F"
+                },
+                {
+                    "name": "BURGUNDY",
+                    "hex": "#890620"
+                },
+                {
+                    "name": "BROWN",
+                    "hex": "#2C0703"
+                }
+            ]
+        },
+        {
+            "name": "Palette 3",
+            "colors": [
+                {
+                    "name": "CLASSIC ROSE",
+                    "hex": "#F5CCE8"
+                },
+                {
+                    "name": "LAVENDER ROSE",
+                    "hex": "#EC9DED"
+                },
+                {
+                    "name": "VIOLET (WEB)",
+                    "hex": "#EA6AED"
+                },
+                {
+                    "name": "PEARLY PURPLE",
+                    "hex": "#9F6BA0"
+                },
+                {
+                    "name": "DARK PUCE",
+                    "hex": "#4A2040"
+                }
+            ]
+        },
+        {
+            "name": "Palette 4",
+            "colors": [
+                {
+                    "name": "DUST STORM",
+                    "hex": "#EBD4CB"
+                },
+                {
+                    "name": "PARROT PINK",
+                    "hex": "#DA9F93"
+                },
+                {
+                    "name": "ROSE",
+                    "hex": "#B6465F"
+                },
+                {
+                    "name": "BURGUNDY",
+                    "hex": "#890620"
+                },
+                {
+                    "name": "BROWN",
+                    "hex": "#2C0703"
+                }
+            ]
+        }
+    ]
+}

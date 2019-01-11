@@ -1,0 +1,8 @@
+.item {
+    display: flex;
+}
+
+.color-container {
+    display: flex;
+    position: fixed;
+}

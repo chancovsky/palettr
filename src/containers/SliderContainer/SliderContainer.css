@@ -1,0 +1,28 @@
+.blue {
+    height: 50px;
+    width: 50px;
+    background: blue;
+}
+.icon {
+    height: 15px;
+    color: #525151;
+    width: 15px;
+    margin: 15px 0px;
+    cursor: pointer;
+}
+
+.container-main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-control {
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    right: 15px;
+    align-self: center;
+}
