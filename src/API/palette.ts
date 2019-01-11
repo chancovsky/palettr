@@ -21,23 +21,10 @@ export default class Palette {
   }
 
   updateColor(id: string, color: string) {
-      console.log(this.colors);
-      console.log('data', id);
-      console.log('color', color);
-      
-    // const index: number = this.colors.indexOf(
-    //   (e: ColorData): any => {
-    //     return (e.id = id)
-    //   }
-    // );
-
     const index = this.colors.map(e => {return e.id}).indexOf(id);
-    console.log(index);
     if (index !== -1) {
       this.colors[index].value = color;
     }
-
-    console.log(this.colors);
   }
 
   generateGUID(): string {
@@ -50,11 +37,6 @@ export default class Palette {
         ).toString(16)
     );
   }
-}
-
-interface UpdateDataInterface {
-  color_id: string;
-  value: string;
 }
 
 interface ColorData {
