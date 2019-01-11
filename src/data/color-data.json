@@ -1,104 +1,124 @@
 {
-    "colorData": [
+  "colorData": [
+    {
+      "name": "Palette 1",
+      "colors": [
         {
-            "name": "Palette 1",
-            "colors": [
-                {
-                    "name": "PLUM",
-                    "hex": "#88498F"
-                },
-                {
-                    "name": "WELDON BLUE",
-                    "hex": "#779FA1"
-                },
-                {
-                    "name": "DESERT SAND",
-                    "hex": "#E0CBA8"
-                },
-                {
-                    "name": "TOMATO",
-                    "hex": "#FF6542"
-                },
-                {
-                    "name": "PINEAPPLE",
-                    "hex": "#564154"
-                }
-            ]
+          "id": "b7efa10d-05fe-42eb-b827-2a7b1234e0fb",
+          "name": "PLUM",
+          "value": "#88498F"
         },
         {
-            "name": "Palette 2",
-            "colors": [
-                {
-                    "name": "DUST STORM",
-                    "hex": "#EBD4CB"
-                },
-                {
-                    "name": "PARROT PINK",
-                    "hex": "#DA9F93"
-                },
-                {
-                    "name": "ROSE",
-                    "hex": "#B6465F"
-                },
-                {
-                    "name": "BURGUNDY",
-                    "hex": "#890620"
-                },
-                {
-                    "name": "BROWN",
-                    "hex": "#2C0703"
-                }
-            ]
+          "id": "db7b59cb-e676-4544-9565-cbb08e52cbce",
+          "name": "WELDON BLUE",
+          "value": "#779FA1"
         },
         {
-            "name": "Palette 3",
-            "colors": [
-                {
-                    "name": "CLASSIC ROSE",
-                    "hex": "#F5CCE8"
-                },
-                {
-                    "name": "LAVENDER ROSE",
-                    "hex": "#EC9DED"
-                },
-                {
-                    "name": "VIOLET (WEB)",
-                    "hex": "#EA6AED"
-                },
-                {
-                    "name": "PEARLY PURPLE",
-                    "hex": "#9F6BA0"
-                },
-                {
-                    "name": "DARK PUCE",
-                    "hex": "#4A2040"
-                }
-            ]
+          "id": "0946a781-332b-4efd-abdd-954c1036b49f",
+          "name": "DESERT SAND",
+          "value": "#E0CBA8"
         },
         {
-            "name": "Palette 4",
-            "colors": [
-                {
-                    "name": "DUST STORM",
-                    "hex": "#EBD4CB"
-                },
-                {
-                    "name": "PARROT PINK",
-                    "hex": "#DA9F93"
-                },
-                {
-                    "name": "ROSE",
-                    "hex": "#B6465F"
-                },
-                {
-                    "name": "BURGUNDY",
-                    "hex": "#890620"
-                },
-                {
-                    "name": "BROWN",
-                    "hex": "#2C0703"
-                }
-            ]
+          "id": "7ad2b58d-ce53-48e8-93c7-92bace9cc2a6",
+          "name": "TOMATO",
+          "value": "#FF6542"
+        },
+        {
+          "id": "d9c44360-62df-4174-8be0-601fe8b18c99",
+          "name": "BROWN",
+          "value": "#2C0703"
         }
-    ]
+      ]
+    },
+    {
+      "name": "Palette 2",
+      "colors": [
+        {
+          "id": "df196f4f-05f2-41af-b13b-7a7b33a46d33",
+          "name": "PINEAPPLE",
+          "value": "#564154"
+        },
+        {
+          "id": "4abdd865-f101-4702-add1-3331761111b6",
+          "name": "DUST STORM",
+          "value": "#EBD4CB"
+        },
+        {
+          "id": "354b57fe-4f70-4466-8561-da8b2cecb729",
+          "name": "PARROT PINK",
+          "value": "#DA9F93"
+        },
+        {
+          "id": "593c8def-36ae-419c-a714-2d15ad30be20",
+          "name": "ROSE",
+          "value": "#B6465F"
+        },
+        {
+          "id": "419be5cd-19fe-47af-87d6-3e3752c33d78",
+          "name": "BURGUNDY",
+          "value": "#890620"
+        }
+      ]
+    },
+    {
+      "name": "Palette 3",
+      "colors": [
+        {
+          "id": "d1d02f72-a958-4141-ba30-9649a16fcf1f",
+          "name": "BROWN",
+          "value": "#2C0703"
+        },
+        {
+          "id": "b48c6363-6875-4e25-9b38-f95345628eb7",
+          "name": "CLASSIC ROSE",
+          "value": "#F5CCE8"
+        },
+        {
+          "id": "f67ee1bd-2576-4b6d-9308-11bd41c5a4d9",
+          "name": "LAVENDER ROSE",
+          "value": "#EC9DED"
+        },
+        {
+          "id": "945eadde-8a4d-4461-ad9d-7a04bd3fcc43",
+          "name": "VIOLET (WEB)",
+          "value": "#EA6AED"
+        },
+        {
+          "id": "3b95163e-70f2-4087-ba32-e355d0f6b6a0",
+          "name": "PEARLY PURPLE",
+          "value": "#9F6BA0"
+        }
+      ]
+    },
+    {
+      "name": "Palette 4",
+      "colors": [
+        {
+          "id": "830029d1-2a97-48e7-8ee5-c50ca1078ec2",
+          "name": "DARK PUCE",
+          "value": "#4A2040"
+        },
+        {
+          "id": "812cb6bc-efda-46b5-b86e-0d7d05bea875",
+          "name": "DUST STORM",
+          "value": "#EBD4CB"
+        },
+        {
+          "id": "cd858788-846d-4e4a-917f-07a0956b30c8",
+          "name": "PARROT PINK",
+          "value": "#DA9F93"
+        },
+        {
+          "id": "3ac78727-c89e-4858-8e38-23134a3d7d62",
+          "name": "ROSE",
+          "value": "#B6465F"
+        },
+        {
+          "id": "16f41e48-ce13-4ae8-b5cf-e75733cb5c00",
+          "name": "BURGUNDY",
+          "value": "#890620"
+        }
+      ]
+    }
+  ]
 }

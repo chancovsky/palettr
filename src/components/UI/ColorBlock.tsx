@@ -3,6 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 // Import styles
 import './ColorBlock.css';
+import SliderContainer from '../../containers/SliderContainer/SliderContainer';
 
 
 import posed from 'react-pose';
@@ -22,11 +23,16 @@ const Box = styled(posed.div(BoxProps))`
 `
 
 export function ColorBlock(props: ColorBlockProps) {
+    const handleClick = () => {
+        console.log('clicked');
+        
+        props.handleColorUpdate(props.palette, props.id, "#FFFFFF");
+    }
     return (
         <div className="color-patch-container">
             <Box
                 className="color-patch"
-                onClick={props.handleClick}
+                onClick={handleClick}
                 color={props.color}
             >
             </Box>
@@ -39,5 +45,8 @@ interface ColorBlockProps {
     color?: string;
     handleClick?: any;
     name?: string;
+    palette?: any;
+    id?: string;
+    handleColorUpdate?: any;
 };
 

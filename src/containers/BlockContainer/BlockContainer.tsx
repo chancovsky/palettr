@@ -37,10 +37,11 @@ const Item = posed.div({
 });
 
 export function BlockContainer(props: BlockContainerProps) {
-    const colorPatches = props.colors.map((e: any) => {
+    console.log('props', props)
+    const colorPatches = props.palette.colors.map((e: any) => {
         return (
             <Item className="item" key={e.name}>
-                <ColorBlock name="test" color={e.hex} />
+                <ColorBlock name="test" color={e.value} handleColorUpdate={props.handleColorUpdate} palette={props.palette} id={e.id} />
             </Item>
         )
     })
@@ -55,7 +56,8 @@ export function BlockContainer(props: BlockContainerProps) {
 
 interface BlockContainerProps {
     children?: React.ReactNode;
-    colors?: any;
+    palette?: any;
     animationState?: any;
     animationCallback?: any;
+    handleColorUpdate?: any;
 };
