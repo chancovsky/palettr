@@ -6,7 +6,9 @@ import { BlockContainer } from '../BlockContainer/BlockContainer';
 
 import data from '../../data/color-data.json';
 
-import Palette from '../../API/palette';
+import Palette from '../../API/Palette';
+
+import Collection from '../../API/Collection';
 
 export default class SliderContainer extends React.Component<
   SliderContainerProps,
@@ -15,44 +17,46 @@ export default class SliderContainer extends React.Component<
   constructor(props: SliderContainerProps) {
     super(props);
     this.state = {
-      colorData: [],
+      collection: {
+        palettes: []
+      },
       curPos: 0,
       updateNum: 0
     };
 
     this.handleNext = this.handleNext.bind(this);
     this.handlePrevious = this.handlePrevious.bind(this);
+    this.handleColorUpdate = this.handleColorUpdate.bind(this);
+    this.handleAddPalette = this.handleAddPalette.bind(this);
   }
   componentDidMount() {
     this.initializeData();
   }
 
   initializeData(): void {
-    const collection = data.colorData.map((e: any) => {
-      const item = new Palette(e.colors);
-      console.log(item);
-      return {
-        name: e.name,
-        colors: item
-      };
-    });
-
-    console.log(collection);
+    const collection = new Collection(data);
     this.setState({
-      colorData: collection
+      collection: collection
     });
-
-    this.handleColorUpdate = this.handleColorUpdate.bind(this);
   }
 
   handleColorUpdate(palette: any, id: string, color: string): void {
     palette.updateColor(id, color);
     this.forceUpdate();
-    console.log('color updated');
+  }
+
+  handleAddPalette(): void {
+    this.state.collection.addCollection('test');
+    this.forceUpdate(() => {
+      const newPos = this.state.collection.palettes.length - 1;
+      this.setState({
+        curPos: newPos
+      });
+    });
   }
 
   handleNext(e: any) {
-    this.state.colorData.length - 1 === this.state.curPos
+    this.state.collection.palettes.length - 1 === this.state.curPos
       ? false
       : this.setState({
           curPos: this.state.curPos + 1
@@ -68,26 +72,26 @@ export default class SliderContainer extends React.Component<
   }
 
   render() {
-    const collections = this.state.colorData.map((e: any, index: number) => {
-      let aniState = 'closed';
-      if (index === this.state.curPos) {
-        aniState = 'open';
-      } else if (index === this.state.curPos + 1) {
-        aniState = 'next';
-      } else if (index === this.state.curPos - 1) {
-        aniState = 'previous';
+    const collections = this.state.collection.palettes.map(
+      (e: any, index: number) => {
+        let aniState = 'closed';
+        if (index === this.state.curPos) {
+          aniState = 'open';
+        } else if (index === this.state.curPos + 1) {
+          aniState = 'next';
+        } else if (index === this.state.curPos - 1) {
+          aniState = 'previous';
+        }
+        return (
+          <BlockContainer
+            key={e.name}
+            animationState={aniState}
+            palette={e}
+            handleColorUpdate={this.handleColorUpdate}
+          />
+        );
       }
-      console.log(aniState);
-      console.log(e);
-      return (
-        <BlockContainer
-          key={e.name}
-          animationState={aniState}
-          palette={e.colors}
-          handleColorUpdate={this.handleColorUpdate}
-        />
-      );
-    });
+    );
     return (
       <div className="container-main">
         {collections}
@@ -125,6 +129,24 @@ export default class SliderContainer extends React.Component<
             </svg>
           </div>
         </div>
+        <div className="add-container-control">
+          <div className="icon" onClick={this.handleAddPalette}>
+            <svg
+              aria-hidden="true"
+              data-prefix="fas"
+              data-icon="plus-circle"
+              className="svg-inline--fa fa-plus-circle fa-w-16"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="currentColor"
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
     );
   }
@@ -132,7 +154,7 @@ export default class SliderContainer extends React.Component<
 
 interface SliderContainerState {
   children?: React.ReactNode;
-  colors?: any;
+  collection?: any;
   animationState?: any;
   animationCallback?: any;
   colorData?: any;

@@ -1,7 +1,9 @@
 export default class Palette {
   colors: ColorData[];
-  constructor(input?: ColorData[]) {
-    this.colors = typeof input !== 'undefined' ? this.colors = (input) : this.buildDefaultData();
+  name: string;
+  constructor(name: string, input?: ColorData[]) {
+    this.colors = typeof input !== 'undefined' ? input : this.buildDefaultData();
+    this.name = typeof name !== 'undefined' ? name : "";
   }
 
   buildDefaultData(): ColorData[] {
