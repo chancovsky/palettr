@@ -1,21 +1,14 @@
 /** @tsx tsx */
 import React from 'react';
-// Import Electron to use ipcRenderer
-// declare const window: any;
-// const electron = window.require("electron");
-
 import './SliderContainer.css';
-
 import { BlockContainer } from '../BlockContainer/BlockContainer';
-
-import data from '../../data/color-data.json';
-
+import defaultData from '../../data/color-data.json';
 import Collection from '../../API/Collection';
 
 export default class SliderContainer extends React.Component<
   SliderContainerProps,
   SliderContainerState
-  > {
+> {
   constructor(props: SliderContainerProps) {
     super(props);
     this.state = {
@@ -38,39 +31,37 @@ export default class SliderContainer extends React.Component<
   }
 
   initializeData(): void {
-    // const loadData = electron.ipcRenderer.sendSync('getFile');
-
-    // if (loadData === false) {
-    //   const collection = new Collection();
-    //   this.setState({
-    //     collection: collection
-    //   });
-    // } else {
-    //   const collection = new Collection(loadData);
-    //   this.setState({
-    //     collection: collection
-    //   });
-    // }
-
-    const collection = new Collection(data);
-    this.setState({
-      collection: collection
-    });
+    if (localStorage.getItem('collections') === null) {
+      console.log('no saved data');
+      const collection = new Collection(defaultData.colorData);
+      this.setState({
+        collection: collection
+      });
+    } else {
+      const storedCollection = localStorage.getItem('collections');
+      const collectionJson = JSON.parse(storedCollection || '');
+      let collection = new Collection(collectionJson.palettes);
+      this.setState({
+        collection: collection
+      });
+    }
   }
 
   saveData(): void {
     // const save = electron.ipcRenderer.sendSync('saveFile', this.state.collection);
+    localStorage.setItem('collections', JSON.stringify(this.state.collection));
     console.log('save');
   }
 
   handleColorUpdate(palette: any, id: string, color: string): void {
     palette.updateColor(id, color);
+    this.saveData();
     this.forceUpdate();
   }
 
   handleRemove(): void {
     this.state.collection.removeCollection(this.state.curPos);
-    console.log(this.state)
+    console.log(this.state);
     this.forceUpdate(() => {
       const newPos = this.state.collection.palettes.length - 1;
       this.setState({
@@ -94,21 +85,21 @@ export default class SliderContainer extends React.Component<
   handleNext(e: any) {
     this.state.collection.palettes.length - 1 === this.state.curPos
       ? this.setState({
-        curPos: 0
-      })
+          curPos: 0
+        })
       : this.setState({
-        curPos: this.state.curPos + 1
-      });
+          curPos: this.state.curPos + 1
+        });
   }
 
   handlePrevious(e: any) {
     this.state.curPos === 0
       ? this.setState({
-        curPos: this.state.collection.palettes.length - 1
-      })
+          curPos: this.state.collection.palettes.length - 1
+        })
       : this.setState({
-        curPos: this.state.curPos - 1
-      });
+          curPos: this.state.curPos - 1
+        });
   }
 
   render() {
@@ -132,7 +123,12 @@ export default class SliderContainer extends React.Component<
         );
       }
     );
-    const removeIcon = <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z"></path>
+    const removeIcon = (
+      <path
+        fill="currentColor"
+        d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z"
+      />
+    );
 
     return (
       <div className="container-main">
@@ -189,7 +185,11 @@ export default class SliderContainer extends React.Component<
             </svg>
           </div>
           <div className="icon" onClick={this.handleRemove}>
-            <svg viewBox="0 0 496 496" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              viewBox="0 0 496 496"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               {removeIcon}
             </svg>
           </div>

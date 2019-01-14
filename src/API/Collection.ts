@@ -7,8 +7,8 @@ export default class Collection {
   }
 
   buildData(data: any): Palette[] {
-    const ret: Palette[] = []
-    data.colorData.forEach((e: any) => {
+    const ret: Palette[] = [];
+    data.forEach((e: any) => {
       const item = new Palette(e.name, e.colors);
       ret.push(item);
     });
