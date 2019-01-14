@@ -15,9 +15,13 @@ export default class Collection {
     return ret;
   }
 
-  addCollection(name: string) {
+  addCollection() {
     const newPalette = new Palette(this.generateGUID());
     this.palettes.push(newPalette);
+  }
+
+  removeCollection(index: number) {
+    this.palettes.splice(index, 1);
   }
 
   generateGUID(): string {

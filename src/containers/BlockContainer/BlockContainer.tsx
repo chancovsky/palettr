@@ -38,7 +38,6 @@ const Item = posed.div({
 });
 
 export function BlockContainer(props: BlockContainerProps) {
-  console.log('props', props);
   const colorPatches = props.palette.colors.map((e: any) => {
     return (
       <Item className="item" key={e.id}>
