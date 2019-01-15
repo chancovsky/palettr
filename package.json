@@ -1,6 +1,6 @@
 {
   "name": "palettr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "main": "public/electron.js",
   "dependencies": {
@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "electron": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "PUBLIC_URL=./ react-scripts build && electron-builder --mac --linux --win -p always",
+    "dist": "PUBLIC_URL=./ react-scripts build && electron-builder --mac -p always",
     "package": "yarn build && electron-builder build --publish never"
   },
   "eslintConfig": {
@@ -60,40 +60,12 @@
         "dmg",
         "mas"
       ],
-      "publish": {
-        "provider": "github",
-        "repo": "chancovsky/palettr",
-        "owner": "chancovsky"
-      },
-      "category": "public.app-category.news"
+      "category": "public.app-category.productivity"
     },
     "mas": {
       "entitlements": "assets/entitlements.mas.plist",
       "entitlementsInherit": "assets/entitlements.mas.inherit.plist",
       "provisioningProfile": "assets/embedded.provisionprofile"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico",
-      "publish": {
-        "provider": "s3",
-        "bucket": "example-releases",
-        "path": "releases"
-      }
-    },
-    "linux": {
-      "icon": "assets/icon.png",
-      "target": [
-        "snap",
-        "AppImage"
-      ],
-      "description": "Example",
-      "category": "Network;Feed",
-      "publish": {
-        "provider": "s3",
-        "bucket": "example-releases",
-        "path": "releases"
-      }
     }
   }
 }

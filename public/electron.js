@@ -3,8 +3,6 @@ const { TouchBarButton, TouchBarLabel, TouchBarSpacer } = TouchBar;
 
 const path = require('path');
 const isDev = require('electron-is-dev');
-// const userDataPath = (app || remote.app).getPath('userData');
-// const dataFile = path.join(userDataPath, 'palettrData.json');
 
 let mainWindow;
 
@@ -73,11 +71,6 @@ generateMenu = () => {
         {
             label: 'File',
             submenu: [{ role: 'about' }, { role: 'quit' }],
-        },
-        {
-            label: 'Palettes',
-            submenu: [
-            ],
         },
         {
             role: 'window',
