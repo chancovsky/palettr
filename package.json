@@ -1,6 +1,6 @@
 {
   "name": "palettr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "main": "public/electron.js",
   "dependencies": {
@@ -11,6 +11,7 @@
     "@types/react": "16.7.18",
     "@types/react-dom": "16.0.11",
     "electron-is-dev": "^1.0.1",
+    "electron-json-storage": "^4.1.5",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-pose": "^4.0.4",
@@ -24,13 +25,15 @@
     "electron-devtools-installer": "^2.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"yarn web\" \"wait-on http://localhost:3000 && electron .\"",
+    "web": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "npx build --x64 --macos --c.extraMetadata.main=build/electron.js -p always"
+    "dist": "PUBLIC_URL=./ react-scripts build && electron-builder --mac -p always",
+    "package": "yarn build && electron-builder build --publish never"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,13 +45,9 @@
     "not op_mini all"
   ],
   "build": {
+    "appId": "com.chancovsky.palettr",
     "compression": "normal",
-    "productName": "palettr",
-    "extends": null,
-    "files": [
-      "./build/**/*",
-      "./build/electron.js"
-    ],
+    "productName": "Palettr",
     "directories": {
       "buildResources": "build",
       "output": "dist"
@@ -61,12 +60,7 @@
         "dmg",
         "mas"
       ],
-      "publish": {
-        "provider": "s3",
-        "bucket": "example-releases",
-        "path": "releases"
-      },
-      "category": "public.app-category.news"
+      "category": "public.app-category.productivity"
     },
     "mas": {
       "entitlements": "assets/entitlements.mas.plist",

@@ -1,13 +1,12 @@
-const { app, BrowserWindow, shell, ipcMain, Menu, TouchBar, Tray } = require('electron');
+const { app, BrowserWindow, shell, ipcMain, Menu, TouchBar } = require('electron');
 const { TouchBarButton, TouchBarLabel, TouchBarSpacer } = TouchBar;
 
 const path = require('path');
-const isDev = false;
-const assetsDirectory = path.join(__dirname, 'img')
+const isDev = require('electron-is-dev');
 
 let mainWindow;
 
-const createWindow = () => {
+createWindow = () => {
     mainWindow = new BrowserWindow({
         transparent: true,
         vibrancy: 'dark',
@@ -19,8 +18,11 @@ const createWindow = () => {
         maximizable: false,
         fullscreenable: false,
         titleBarStyle: 'hiddenInset',
+
+        backgroundColor: '#F7F7F7',
+        show: false,
         webPreferences: {
-            nodeIntegration: false,
+            nodeIntegration: true,
             preload: __dirname + '/preload.js',
         }
     });
@@ -28,7 +30,7 @@ const createWindow = () => {
     mainWindow.loadURL(
         isDev
             ? 'http://localhost:3000'
-            : `file://${path.join(__dirname, '../build/index.html')}`,
+            : `file://${path.join(__dirname, './index.html')}`,
     );
 
     if (isDev) {
@@ -64,10 +66,24 @@ const createWindow = () => {
     });
 };
 
+generateMenu = () => {
+    const template = [
+        {
+            label: 'File',
+            submenu: [{ role: 'about' }, { role: 'quit' }],
+        },
+        {
+            role: 'window',
+            submenu: [{ role: 'minimize' }, { role: 'close' }],
+        },
+    ];
+
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+};
 
 app.on('ready', () => {
     createWindow();
-    createTray();
+    generateMenu();
 });
 
 app.on('window-all-closed', () => {
@@ -84,15 +100,12 @@ ipcMain.on('load-page', (event, arg) => {
     mainWindow.loadURL(arg);
 });
 
-// Creates tray image & toggles window on click
-const createTray = () => {
-    let tray = new Tray(path.join(assetsDirectory, 'icon.png'))
-    const contextMenu = Menu.buildFromTemplate([
-        { label: 'Item1', type: 'radio' },
-        { label: 'Item2', type: 'radio' },
-        { label: 'Item3', type: 'radio', checked: true },
-        { label: 'Item4', type: 'radio' }
-    ])
-    tray.setToolTip('Platr')
-    tray.setContextMenu(contextMenu)
-}
+// ipcMain.on('saveFile', (event, arg) => {
+//     storage.set('colorData', arg);
+// });
+// ipcMain.on('getFile', (event) => {
+//     storage.get('colorData').then((object) => {
+//         event.returnValue = object
+//     });
+// });
+
