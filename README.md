@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://connorhancovsky.com/palettr/icon.png" height="64">
+  <img src="https://www.connorhancovsky.com/palettr/icon.png" height="64">
   <h3 align="center">Palettr</h3>
   <p align="center">macOS app for storing and managing color palettes in a useful way<p>
 </p>
