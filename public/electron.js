@@ -18,7 +18,6 @@ createWindow = () => {
         maximizable: false,
         fullscreenable: false,
         titleBarStyle: 'hiddenInset',
-
         backgroundColor: '#F7F7F7',
         show: false,
         webPreferences: {
@@ -73,6 +72,14 @@ generateMenu = () => {
             submenu: [{ role: 'about' }, { role: 'quit' }],
         },
         {
+            label: "Edit",
+            submenu: [
+                { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+                { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+                { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+            ]
+        },
+        {
             role: 'window',
             submenu: [{ role: 'minimize' }, { role: 'close' }],
         },
@@ -99,13 +106,3 @@ app.on('activate', () => {
 ipcMain.on('load-page', (event, arg) => {
     mainWindow.loadURL(arg);
 });
-
-// ipcMain.on('saveFile', (event, arg) => {
-//     storage.set('colorData', arg);
-// });
-// ipcMain.on('getFile', (event) => {
-//     storage.get('colorData').then((object) => {
-//         event.returnValue = object
-//     });
-// });
-
